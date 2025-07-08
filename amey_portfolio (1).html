@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amey Patil - Portfolio</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #1e3a8a;
+            --secondary-color: #3b82f6;
+            --accent-color: #fbbf24;
+            --text-dark: #1f2937;
+            --text-light: #6b7280;
+            --bg-light: #f8fafc;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+
+        .navbar {
+            background: rgba(30, 58, 138, 0.95) !important;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            padding: 1rem 0;
+        }
+
+        .navbar.scrolled {
+            background: rgba(30, 58, 138, 0.98) !important;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.8rem;
+            color: white !important;
+        }
+
+        .nav-link {
+            color: rgba(255,255,255,0.9) !important;
+            font-weight: 500;
+            margin: 0 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--accent-color) !important;
+            transform: translateY(-2px);
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><polygon fill="rgba(255,255,255,0.05)" points="0,1000 1000,0 1000,1000"/></svg>');
+            background-size: cover;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 3rem;
+            animation: fadeInUp 1s ease 0.4s both;
+        }
+
+        .btn-primary-custom {
+            background: var(--accent-color);
+            border: none;
+            color: var(--text-dark);
+            font-weight: 600;
+            padding: 12px 30px;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            animation: fadeInUp 1s ease 0.6s both;
+        }
+
+        .btn-primary-custom:hover {
+            background: #f59e0b;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(251, 191, 36, 0.3);
+        }
+
+        .floating-icons {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .floating-icon {
+            position: absolute;
+            color: rgba(255,255,255,0.1);
+            font-size: 2rem;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 3rem;
+            position: relative;
+            text-align: center;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: var(--accent-color);
+            border-radius: 2px;
+        }
+
+        .about-section {
+            padding: 100px 0;
+            background: var(--bg-light);
+        }
+
+        .about-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-light);
+        }
+
+        .stats-section {
+            background: var(--primary-color);
+            padding: 80px 0;
+            color: white;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            margin-top: 0.5rem;
+        }
+
+        .education-section, .experience-section, .projects-section {
+            padding: 100px 0;
+        }
+
+        .timeline {
+            position: relative;
+            padding: 0;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding: 2rem 0;
+            border-left: 3px solid var(--secondary-color);
+            margin-left: 2rem;
+            padding-left: 3rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -8px;
+            top: 2rem;
+            width: 13px;
+            height: 13px;
+            background: var(--accent-color);
+            border-radius: 50%;
+        }
+
+        .timeline-date {
+            color: var(--secondary-color);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .timeline-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin: 0.5rem 0;
+        }
+
+        .timeline-subtitle {
+            color: var(--text-light);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .timeline-content {
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        .skills-section {
+            padding: 100px 0;
+            background: var(--bg-light);
+        }
+
+        .skill-category {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .skill-icon {
+            font-size: 3rem;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+
+        .skill-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .skill-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .skill-list li {
+            padding: 0.3rem 0;
+            color: var(--text-light);
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .skill-list li::before {
+            content: '▶';
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+            font-size: 0.8rem;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+        }
+
+        .project-header {
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .project-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-body {
+            padding: 2rem;
+        }
+
+        .tech-tag {
+            display: inline-block;
+            background: rgba(59, 130, 246, 0.1);
+            color: var(--secondary-color);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin: 0.2rem;
+            font-weight: 500;
+        }
+
+        .contact-section {
+            background: var(--primary-color);
+            color: white;
+            padding: 100px 0;
+        }
+
+        .contact-info {
+            background: rgba(255,255,255,0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            margin-bottom: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-icon {
+            font-size: 1.5rem;
+            color: var(--accent-color);
+            margin-right: 1rem;
+            width: 40px;
+        }
+
+        .footer {
+            background: #0f172a;
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        .social-links {
+            margin: 2rem 0;
+        }
+
+        .social-link {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            background: var(--secondary-color);
+            color: white;
+            border-radius: 50%;
+            line-height: 50px;
+            text-align: center;
+            margin: 0 0.5rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .social-link:hover {
+            background: var(--accent-color);
+            color: var(--text-dark);
+            transform: translateY(-5px);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .timeline-item {
+                margin-left: 1rem;
+                padding-left: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+   <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+  <div class="container">
+    <!-- Brand with Clickable Image -->
+    <a class="navbar-brand d-flex align-items-center" href="#home">
+      <img src="amey-img.jpg"
+           alt="Amey Patil"
+           class="rounded-circle me-2"
+           style="width: 40px; height: 40px; object-fit: cover; border: 2px solid #fff; cursor: pointer;"
+           data-bs-toggle="modal"
+           data-bs-target="#profileImageModal">
+      Amey Patil
+    </a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
+        <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
+        <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+        <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Profile Image Modal -->
+<div class="modal fade" id="profileImageModal" tabindex="-1" aria-labelledby="profileImageModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content bg-dark text-center">
+      <div class="modal-body p-0">
+        <img src="amey-img.jpg" alt="Enlarged Amey Patil" class="img-fluid rounded-3" style="max-height: 90vh; object-fit: contain;">
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section py-5">
+  <div class="floating-icons">
+    <i class="fab fa-aws floating-icon" style="top: 10%; left: 10%; animation-delay: 0s;"></i>
+    <i class="fab fa-python floating-icon" style="top: 20%; right: 15%; animation-delay: 1s;"></i>
+    <i class="fas fa-cloud floating-icon" style="top: 60%; left: 20%; animation-delay: 2s;"></i>
+    <i class="fab fa-java floating-icon" style="bottom: 20%; right: 20%; animation-delay: 3s;"></i>
+    <i class="fas fa-database floating-icon" style="bottom: 30%; left: 15%; animation-delay: 4s;"></i>
+  </div>
+  <div class="container">
+    <div class="row align-items-center">
+      
+      <!-- Hero Text (Left) -->
+      <div class="col-lg-8 hero-content order-1 order-lg-1">
+        <h1 class="hero-title">Amey Patil</h1>
+        <h2 class="hero-subtitle">Full Stack Java Developer || Cloud Computing Engineer</h2>
+        <p class="hero-description">
+          Passionate Java developer and cloud computing enthusiast completed Bachelor of Engineering in Computer. 
+          Specializing in enterprise Java applications using Spring Boot, microservices architecture, and database integration with MySQL and Hibernate.
+          Experienced in deploying and scaling Java applications on AWS cloud platform using services like EC2, RDS, S3, and Lambda. 
+          Combines strong programming fundamentals with modern cloud technologies to build robust, scalable backend solutions.
+        </p>
+        <a href="#contact" class="btn btn-primary-custom btn-lg">
+          <i class="fas fa-envelope me-2"></i>Get In Touch
+        </a>
+      </div>
+
+      <!-- Profile Image (Right) -->
+      
+      
+    </div>
+  </div>
+</section>
+
+
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2 class="section-title">About Me</h2>
+                    <div class="about-content">
+                        <p class="lead text-center mb-5">
+                            I am a dedicated engineering student with a passion for cloud computing and software development. 
+                            My journey in technology has been focused on building scalable, efficient solutions using cutting-edge 
+                            cloud technologies and programming languages. With solid foundation in engineering principles, 
+                            I am proficient in applying them to complex IT systems.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="education-section">
+        <div class="container">
+            <h2 class="section-title">Education</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">Nov 2022 - Jun 2025</div>
+                    <h3 class="timeline-title">Bachelor of Engineering (Computer)</h3>
+                    <div class="timeline-subtitle">Dr. D Y Patil College of Engineering and Innovation, Varale, Pune</div>
+                    <div class="timeline-content">
+                        <strong>SGPA: 9.12</strong><br>
+                        Currently pursuing engineering degree with focus on computer science and cloud technologies. 
+                        Strong academic performance with emphasis on practical applications and industry-relevant skills.
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">Aug 2019 - Jul 2022</div>
+                    <h3 class="timeline-title">Diploma in Information Technology</h3>
+                    <div class="timeline-subtitle">Government Polytechnic, Jalgaon</div>
+                    <div class="timeline-content">
+                        <strong>Percentage: 84.81%</strong><br>
+                        Comprehensive diploma program covering IT fundamentals, programming, database management, 
+                        and system administration. Built strong foundation in technical concepts and practical implementation.
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">Jun 2018 - Mar 2019</div>
+                    <h3 class="timeline-title">SSC (10th Standard)</h3>
+                    <div class="timeline-subtitle">Shree Swaminarayan Gurukul, Sakegaon, Bhusawal</div>
+                    <div class="timeline-content">
+                        <strong>Percentage: 87.60%</strong><br>
+                        Strong foundation in science and mathematics, setting the groundwork for technical education. 
+                        Developed analytical thinking and problem-solving skills.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="experience-section bg-light">
+        <div class="container">
+            <h2 class="section-title">Professional Experience</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">Jun 2024 - Aug 2024</div>
+                    <h3 class="timeline-title">Cloud Computing Intern</h3>
+                    <div class="timeline-subtitle">Acmegrade</div>
+                    <div class="timeline-content">
+                        <p><strong>Key Responsibilities & Achievements:</strong></p>
+                        <ul>
+                            <li>Actively learned and implemented AWS services including EC2, S3, RDS, and Lambda to design scalable and reliable cloud solutions</li>
+                            <li>Developed cloud architectures that align with business goals, emphasizing security, reliability, performance, and cost efficiency</li>
+                            <li>Gained hands-on experience with cloud infrastructure management and deployment strategies</li>
+                            <li>Collaborated with team members on cloud migration projects and optimization initiatives</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">Dec 2023 - Feb 2024</div>
+                    <h3 class="timeline-title">Web Development Intern</h3>
+                    <div class="timeline-subtitle">Elite Softwares</div>
+                    <div class="timeline-content">
+                        <p><strong>Key Responsibilities & Achievements:</strong></p>
+                        <ul>
+                            <li>Developed proficiency in HTML, CSS, JavaScript, and responsive design principles</li>
+                            <li>Built interactive and user-friendly web applications with modern UI/UX practices</li>
+                            <li>Enhanced Python programming skills with knowledge of frameworks like Django and Flask</li>
+                            <li>Developed scalable backend solutions and integrated with various databases</li>
+                            <li>Collaborated on full-stack development projects from conception to deployment</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills-section">
+        <div class="container">
+            <h2 class="section-title">Technical Skills</h2>
+            <div class="row">
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="skill-category">
+                        <div class="skill-icon">
+                            <i class="fas fa-cloud"></i>
+                        </div>
+                        <h4 class="skill-title">Cloud Platforms</h4>
+                        <ul class="skill-list">
+                            <li>Amazon Web Services (AWS)</li>
+                            <li>Microsoft Azure</li>
+                            <li>EC2 (Elastic Compute Cloud)</li>
+                            <li>S3 (Simple Storage Service)</li>
+                            <li>RDS (Relational Database Service)</li>
+                            <li>Lambda (Serverless Computing)</li>
+                            <li>VPC (Virtual Private Cloud)</li>
+                            <li>Route 53 (DNS Service)</li>
+                            <li>CloudFront (CDN)</li>
+                            <li>IAM (Identity Access Management)</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="skill-category">
+                        <div class="skill-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h4 class="skill-title">Programming Languages</h4>
+                        <ul class="skill-list">
+                            <li>Java (OOPs , Exception Handling , Arrays , Strings , Collections , Interface , Multithreading )</li>
+                            <li>JavaScript</li>
+                            <li>HTML5</li>
+                            <li>CSS3</li>
+                            <li>PHP</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="skill-category">
+                        <div class="skill-icon">
+                            <i class="fas fa-database"></i>
+                        </div>
+                        <h4 class="skill-title">Databases</h4>
+                        <ul class="skill-list">
+                            <li>MySQL</li>
+                            <li>DynamoDB</li>
+                            <li>Database Design</li>
+                            <li>Query Optimization</li>
+                            <li>Data Modeling</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="skill-category">
+                        <div class="skill-icon">
+                            <i class="fab fa-linux"></i>
+                        </div>
+                        <h4 class="skill-title">Operating Systems</h4>
+                        <ul class="skill-list">
+                            <li>Red Hat Linux</li>
+                            <li>Ubuntu</li>
+                            <li>Unix</li>
+                            <li>System Administration</li>
+                            <li>Shell Scripting</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+ <!-- Projects Section -->
+<section id="projects" class="projects-section py-5">
+  <div class="container">
+    <h2 class="section-title text-center mb-5">Projects</h2>
+    <div class="row justify-content-center">
+      
+      <!-- Project Card 1 -->
+      <div class="col-md-6 mb-4">
+        <div class="card h-100 shadow-sm text-center">
+          <div class="card-body">
+            <h4 class="card-title">Blood Bank Management System</h4>
+            <button type="button" class="btn btn-outline-primary mt-3" data-bs-toggle="modal" data-bs-target="#projectModal1">
+              View Description
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project Card 2 -->
+      <div class="col-md-6 mb-4">
+        <div class="card h-100 shadow-sm text-center">
+          <div class="card-body">
+            <h4 class="card-title">Online Wine Selling Application</h4>
+            <button type="button" class="btn btn-outline-primary mt-3" data-bs-toggle="modal" data-bs-target="#projectModal2">
+              View Description
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Modal: Blood Bank Management -->
+<div class="modal fade" id="projectModal1" tabindex="-1" aria-labelledby="projectModal1Label" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="projectModal1Label">Blood Bank Management System</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>
+          A comprehensive web-based application designed to manage blood bank operations efficiently. 
+          The system handles donor registration, blood inventory management, request processing, and 
+          provides a user-friendly interface for both administrators and users.
+        </p>
+        <strong>Key Features:</strong>
+        <ul>
+          <li>Donor registration and profile management</li>
+          <li>Blood inventory tracking and management</li>
+          <li>Blood request and distribution system</li>
+          <li>Admin dashboard for monitoring operations</li>
+          <li>Responsive design for mobile and desktop</li>
+          <li>Secure data handling and user authentication</li>
+        </ul>
+        <strong>Technical Implementation:</strong>
+        <ul>
+          <li>Backend developed using PHP</li>
+          <li>MySQL for data storage</li>
+          <li>Bootstrap for responsive UI</li>
+          <li>HTML & CSS for structure and styling</li>
+        </ul>
+        <div>
+          <span class="tech-tag">PHP</span>
+          <span class="tech-tag">MySQL</span>
+          <span class="tech-tag">Bootstrap</span>
+          <span class="tech-tag">HTML5</span>
+          <span class="tech-tag">CSS3</span>
+          <span class="tech-tag">JavaScript</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: Wine Selling App -->
+<div class="modal fade" id="projectModal2" tabindex="-1" aria-labelledby="projectModal2Label" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="projectModal2Label">Online Wine Selling Application</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>
+          A single-vendor web application designed for wine purchases with age verification using AWS services.
+        </p>
+        <strong>Project Flow:</strong>
+        <ul>
+          <li>User registration with Aadhaar upload → birth date extracted via AWS Textract</li>
+          <li>KYC submission and admin approval</li>
+          <li>Buy wine → face match at checkout via Rekognition</li>
+          <li>Match successful → order placed; else → rejected</li>
+        </ul>
+        <strong>Cloud Technologies:</strong>
+        <ul>
+          <li><strong>Advanced:</strong> AWS Textract, Rekognition, Bedrock, Secret Manager</li>
+          <li><strong>Core:</strong> EC2, RDS, S3, Load Balancer, VPC, Firewall</li>
+        </ul>
+        <strong>Tools Used:</strong>
+        <ul>
+          <li>Git, Bitbucket, VS Code, Docker, Jira</li>
+        </ul>
+        <div>
+          <span class="tech-tag">PHP</span>
+          <span class="tech-tag">MySQL</span>
+          <span class="tech-tag">AWS Textract</span>
+          <span class="tech-tag">AWS Rekognition</span>
+          <span class="tech-tag">S3</span>
+          <span class="tech-tag">Bootstrap</span>
+          <span class="tech-tag">HTML5</span>
+          <span class="tech-tag">Docker</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    <!-- Certifications Section -->
+    <section class="education-section bg-light">
+        <div class="container">
+            <h2 class="section-title">Certifications</h2>
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="skill-category">
+                        <div class="skill-icon">
+                            <i class="fab fa-python"></i>
+                        </div>
+                        <h4 class="skill-title">Basic Python</h4>
+                        <p class="text-muted">Infosys Springboard</p>
+                        <p>Fundamental Python programming concepts, data structures, and application development.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="skill-category">
+                        <div class="skill-icon">
+                            <i class="fab fa-linux"></i>
+                        </div>
+                        <h4 class="skill-title">Linux for Cloud and DevOps Engineers</h4>
+                        <p class="text-muted">Udemy</p>
+                        <p>Advanced Linux administration, shell scripting, and system management for cloud environments.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="skill-category">
+                        <div class="skill-icon">
+                            <i class="fab fa-java"></i>
+                        </div>
+                        <h4 class="skill-title">Core Java</h4>
+                        <p class="text-muted">InfoPlanet Coding Classes</p>
+                        <p>Object-oriented programming, Java fundamentals, and application development using Java.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="skill-category">
+                        <div class="skill-icon">
+                            <i class="bi bi-openai"></i>
+                        </div>
+                        <h4 class="skill-title">GenAI Job Simulation</h4>
+                        <p class="text-muted">BCGX-Forage</p>
+                        <p>Basic introduction about GenAI and implementing with Jupyter, and simplifing the big datasets</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="skill-category">
+                        <div class="skill-icon">
+                            <i class="bi bi-boxes"></i>
+                        </div>
+                        <h4 class="skill-title">ESG Job simulation</h4>
+                        <p class="text-muted">TATA</p>
+                        <p>Working with Microsoft office 365 tools and taking hands on with it on the basis of industrial requirements.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+   <section id="contact" class="contact-section py-5">
+  <div class="container">
+    <h2 class="section-title text-center text-white mb-5">Get In Touch</h2>
+    <div class="row justify-content-center">
+      <!-- Contact Info -->
+      <div class="col-md-6 mb-4">
+        <div class="contact-info text-white">
+          <div class="contact-item mb-4" aria-label="Phone contact">
+            <i class="fas fa-phone contact-icon me-2"></i>
+            <div>
+              <h5>Phone</h5>
+              <p><a href="tel:+918080656048" class="text-white">(+91) 8080656048</a></p>
+            </div>
+          </div>
+
+          <div class="contact-item mb-4" aria-label="LinkedIn profile">
+            <i class="fab fa-linkedin contact-icon me-2" aria-hidden="true"></i>
+            <div>
+              <h5>LinkedIn</h5>
+              <p>
+                <a href="https://www.linkedin.com/in/amey-patil-696115188" class="text-white" target="_blank" rel="noopener noreferrer">
+                  linkedin.com/in/amey-patil-696115188
+                </a>
+              </p>
+            </div>
+          </div>
+
+          <div class="contact-item mb-4" aria-label="Instagram profile">
+            <i class="fab fa-instagram contact-icon me-2" aria-hidden="true"></i>
+            <div>
+              <h5>Instagram</h5>
+              <p>
+                <a href="https://www.instagram.com/me_amey_11.10/" class="text-white" target="_blank" rel="noopener noreferrer">
+                  instagram.com/me_amey_11.10
+                </a>
+              </p>
+            </div>
+          </div>
+
+          <div class="contact-item mb-4" aria-label="Email contact">
+            <i class="fas fa-envelope contact-icon me-2"></i>
+            <div>
+              <h5>Email</h5>
+              <p><a href="mailto:ameyp686@gmail.com" class="text-white">ameyp686@gmail.com</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contact Form -->
+      <div class="col-md-6 mb-4">
+        <div class="card shadow-lg rounded-4">
+          <div class="card-body">
+            <h2 class="card-title text-center mb-4">Contact Me</h2>
+            <form action="https://formsubmit.co/ameyp686@gmail.com" method="POST">
+              <div class="form-group mb-3">
+                <label for="name" class="form-label">Name</label>
+                <input type="text" name="name" id="name" class="form-control" required>
+              </div>
+              <div class="form-group mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" name="email" id="email" class="form-control" required>
+              </div>
+              <div class="form-group mb-4">
+                <label for="message" class="form-label">Message</label>
+                <textarea name="message" id="message" rows="5" class="form-control" required></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary w-100">Send Message</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+</body>
+</html>
